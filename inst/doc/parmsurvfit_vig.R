@@ -6,32 +6,65 @@ knitr::opts_chunk$set(
 
 ## ------------------------------------------------------------------------
 library(parmsurvfit)
-library(survival)
-data("rats")
-fit_data(rats, "logis", "time", "status")
+
+fit_data(data = firstdrink, 
+         dist = "weibull", 
+         time = "age", 
+         censor = "censor")
 
 ## ------------------------------------------------------------------------
-library(survival) 
-data("rats")
-plot_surv(rats, "lnorm", time = "time", censor = "status")
+plot_density(data = firstdrink, 
+             dist = "weibull", 
+             time = "age", 
+             censor = "censor", 
+             by = "gender")
 
 ## ------------------------------------------------------------------------
-library(survival)
-data("rats")
-plot_haz(rats, "weibull", time="time", censor="status")
+plot_ppsurv(data = firstdrink, 
+            dist = "weibull", 
+            time = "age", 
+            censor = "censor")
 
 ## ------------------------------------------------------------------------
-library(survival)
-data("rats")
-plot_cumhaz(rats, "weibull", time="time", censor="status")
+compute_AD(data = firstdrink, 
+           dist = "weibull", 
+           time = "age", 
+           censor = "censor")
 
 ## ------------------------------------------------------------------------
-library(survival)
-data("rats")
-surv_prob(rats, "lnorm", 110, time = "time", censor = "status")
+plot_surv(data = firstdrink, 
+          dist = "weibull", 
+          time = "age", 
+          censor = "censor", 
+          by = "gender")
 
 ## ------------------------------------------------------------------------
-library(survival)
-data("rats")
-surv_summary(rats, "lnorm", time = "time", censor = "status")
+plot_haz(data = firstdrink, 
+         dist = "weibull", 
+         time = "age", 
+         censor = "censor",
+         by = "gender")
+
+## ------------------------------------------------------------------------
+plot_cumhaz(data = firstdrink, 
+            dist = "weibull", 
+            time = "age", 
+            censor = "censor",  
+            by = "gender")
+
+## ------------------------------------------------------------------------
+surv_prob(data = firstdrink, 
+          dist = "weibull", 
+          x = 30, 
+          lower.tail = F, 
+          time = "age", 
+          censor = "censor", 
+          by = "gender")
+
+## ----stats---------------------------------------------------------------
+surv_summary(data = firstdrink, 
+             dist = "weibull", 
+             time = "age", 
+             censor = "censor", 
+             by = "gender")
 
